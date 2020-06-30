@@ -24,6 +24,10 @@ namespace SureCred
             EncryptionKey = ConfigurationManager.AppSettings["ecrKey"].ToString();
             InitVector = ConfigurationManager.AppSettings["ecrIv"].ToString();
             LoadActive();
+            if (ActiveCreds.Count == 0)
+            {
+                return;
+            }
             LoadCurrent();
             CompareCreds();
             if (UpdatedCreds.Count > 0)
